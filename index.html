@@ -1,0 +1,258 @@
+<style>
+
+:root {
+  --wheel-color: white;
+  --wheel-accent-color: #6D77E8;
+  --background-color: #C6DEF4;
+}
+
+body{
+  background: var(--background-color);
+}
+
+.box-canvas{
+  position: relative;
+  margin: auto;
+  display: block;
+  margin-top: 8%;
+  margin-bottom: 8%;
+  width: 260px;
+  height: 250px;
+}
+
+.wheel {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 5px solid var(--wheel-color);
+  background: conic-gradient(
+    var(--wheel-color),
+    var(--wheel-color) 3deg,
+    transparent 3deg,
+    transparent 60deg,
+    var(--wheel-color) 60deg,
+    var(--wheel-color) 63deg,
+    transparent 63deg,
+    transparent 120deg,
+    var(--wheel-color) 120deg,
+    var(--wheel-color) 123deg,
+    transparent 123deg,
+    transparent 180deg,
+    var(--wheel-color) 180deg,
+    var(--wheel-color) 183deg,
+    transparent 183deg,
+    transparent 240deg,
+    var(--wheel-color) 240deg,
+    var(--wheel-color) 243deg,
+    transparent 243deg,
+    transparent 300deg,
+    var(--wheel-color) 300deg,
+    var(--wheel-color) 303deg,
+    transparent 303deg
+  );
+  animation: spin 10s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: none;
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.wheel::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: var(--wheel-accent-color);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 3px solid var(--wheel-color);
+}
+
+.car:nth-child(1) {
+  --car-color: #61CDF0;
+  --accent-color: #0FA8CE;
+  top: 60px;
+  left: -10px;
+}
+
+.car:nth-child(2) {
+  --car-color: #FCB0BA;
+  --accent-color: #F796A2;
+  
+  left: 100px;
+  top: -5px;
+} 
+
+.car:nth-child(3) {
+  --car-color: #C4E248;
+  --accent-color: #B1D317;
+  
+  right: -10px;
+  top: 67px;
+}
+
+.car:nth-child(4) {
+  --car-color: #A85EBC;
+  --accent-color: #9641AD;
+  
+  right: -8px;
+  top: 190px;
+  
+}
+
+.car:nth-child(5) {
+  --car-color: #F75656;
+  --accent-color: #F22E2E;
+  
+  bottom: -50px;
+  left: 95px;
+}
+
+.car:nth-child(6) {
+  --car-color: #F9F98B;
+  --accent-color: #DBDB32;
+  
+  bottom: 15px;
+  left: -12px;
+}
+
+
+
+.car {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  animation: adjust-car 10s infinite linear;
+  transform-origin: center top;
+}
+
+@keyframes adjust-car {
+  0% {
+    transform: none;
+  }
+  
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.car::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 40px;
+  border: 3px solid var(--accent-color);
+}
+
+.top {
+  position: absolute;
+  width: 50px;
+  height: 15px;
+  border-radius: 50% 50% 0 0;
+  background: var(--car-color);
+}
+
+.bottom {
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  background: var(--car-color);
+  border-radius: 0 0 30% 30%;
+  bottom: 0;
+}
+
+/* door handle */
+.bottom::before {
+  content: '';
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  width: 10px;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+/* Door surround */
+.bottom::after {
+  content: '';
+  position: absolute;
+  border: 2px solid var(--accent-color);
+  border-top-color: transparent;
+  left: 10px;
+  width: 25px;
+  height: 13px;
+  border-radius: 0 0 20% 20%;
+}
+
+.stand {
+  position: absolute;
+  width: 250px;
+  height: 205px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: var(--wheel-accent-color);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.stand::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--background-color);
+  width: 230px;
+  height: 185px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+</style>
+
+<body>
+  <div class="box-canvas">
+    <div class="stand"></div>
+    
+    <div class="wheel">
+      <div class="car">
+        <div class="top"></div>
+        <div class="bottom"></div>
+      </div>
+        <div class="car">
+          <div class="top"></div>
+          <div class="bottom"></div>
+      </div>
+       <div class="car">
+          <div class="top"></div>
+          <div class="bottom"></div>
+      </div>
+      <div class="car">
+          <div class="top"></div>
+          <div class="bottom"></div>
+      </div>
+      
+      <div class="car">
+          <div class="top"></div>
+          <div class="bottom"></div>
+      </div>
+      
+      <div class="car">
+          <div class="top"></div>
+          <div class="bottom"></div>
+      </div>
+    </div>
+    
+  </div>
+</body>
